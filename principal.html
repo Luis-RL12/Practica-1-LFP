@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Css/EstilosPrincipal.css">
+    <title>Practica 1</title>
+</head>
+
+<body>
+    <header>
+        <p id="desarrollador">Luis Rodríguez  201730879</p>
+        <img id ="UsacLogo" src="Files/UsacLogoimg.png" width="100" height="100">
+        <h3 id="tituloPrincipal">IDENTIFICADOR</h3>
+        
+    </header>
+    <div id="lineaRoja"></div>
+    <div class="analizarEntrada">
+        <h4 id="Entrada">Ingresa el texto a analizar :</h4>
+        <input id="entradaTxt" type="text" placeholder="Ingresa texto" onkeypress="keyPress(event)" >
+        <button class="botones" onclick="Analizador()">Analizar</button>
+        <!--<input class="botones"  type="submit" value="Buscar">--><br>
+    </div>
+    <p style="text-align: center; color:white;">Nota: Recuerda espacios son considerados Errores</p>
+    <div id='tablas' class="archivo_tablas">
+    </div>
+    <script type="text/javascript" src="./Script/Backend.js"></script>
+</body>
+</html>

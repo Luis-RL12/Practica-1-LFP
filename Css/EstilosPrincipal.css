@@ -1,0 +1,108 @@
+/*
+    Hoja de Estilos para pagina principal
+    by Luis Rodriguez 201730879
+*/
+header{
+    width: 100%;
+    padding-top: 1px;
+    background-color: rgb(16, 60, 68);
+    height: 130px;
+}
+body{
+    background-color: rgb(42, 51, 66);
+    background-image: url("../Files/Fondo.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+#lineaRoja{
+    background-color: red;
+    height: 3px;
+}
+#UsacLogo{
+    float: left;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 30px;
+}
+#desarrollador{
+    float: right;
+    padding-top: 90px;
+    padding-right: 20px;
+    color:white;
+    font-family: Verdana;
+    
+}
+#tituloPrincipal{
+    float: center;
+    color:white;
+    padding-left: 500px;
+    font-family: Arial;
+    font-size: 40px;
+    padding-top: 0px;
+    padding-bottom: 20px;
+}
+#Entrada{
+    padding-left: 20px;
+    color:white;
+    font-family: Arial;
+    font-size: 20px;
+}
+#entradaTxt{
+    margin-left: 20px;
+    width: 250px;
+    padding: 6px 6px;
+    display: inline-block;
+    border: 2px solid gray;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.analizarEntrada{
+    text-align: center;
+}
+.botones{
+    margin-left: 10px;
+    width: 100px;
+    padding: 6px 6px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: gray;
+        color: white;
+        font-size: 17px;
+        text-align: center;
+        font-family: Arial;
+        border:1px solid gray;
+}
+.botones:hover{
+    background-color: rgb(16, 60, 68);
+    border: 1px solid white;
+    color:white;
+}
+.archivo_tablas{
+    width: 100%;
+    height: 50%; 
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+    background-color: white;
+    color: black;
+    border-color: black;
+    margin:auto;
+}
+
+td, th {
+    border: 2px solid #dddddd;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 2px;
+    padding-right: 2px;
+    
+    
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
