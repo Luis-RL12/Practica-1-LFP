@@ -1,4 +1,3 @@
-//console.log("Bienvenido Ingrese palabra a Analizar");
 var palabra = document.getElementById("entradaTxt");
 var abc=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 var numeros=['0','1','2','3','4','5','6','7','8','9'];
@@ -18,20 +17,20 @@ function Analizador() {//Esta funcion determina el primer caracter leido y lo cl
             }
         }for(var k=0; k<numeros.length;k++){
             if(texto[i] === numeros[k]){//si el primer caracter leido es un numero, lo manda a la funcion Numero
-                Numero(texto,i);
+                NumeroYsimbolo(texto,i,numeros,"Numero");
                 errores=0;
                 break;
             }
         }for(var l=0; l<simbolos.length;l++){
-            if(texto[i] === simbolos[l]){//si el primer caracter leido es un numero, lo manda a la funcion simbolo
-                Simbolo(texto,i);
+            if(texto[i] === simbolos[l]){//si el primer caracter leido es un simbolo, lo manda a la funcion simbolo
+                NumeroYsimbolo(texto,i,simbolos,"Simbolo");
                 errores=0;
                 break;
             }
         }
         break;
     }if(errores>0){//si al final de recorrer todo, no es de ningun tipo entonces error
-        error();
+        manejadorTipo(errores,"Error");
     }
     document.getElementById('entradaTxt').value="";
 }
@@ -57,53 +56,32 @@ function Identificador(palabra,posicionLetra){//recibe como parametro el texto i
     }
    manejadorTipo(errores,"Identificador");
 }
-function Numero(cadena,posicionLetra){//funcion si es un simbolo
+function NumeroYsimbolo(cadena,posicionLetra,cadenaVerificar,tipo){//funcion si es un numero o un simbolo
     var errores=0;
     for(var i=posicionLetra+1;i<cadena.length;i++){
-        for(var j=0; j<numeros.length;j++){
-            if(cadena[i]===numeros[j]){//si el caracter leido coinside con un numero, resetea el contador
+        for(var j=0; j<cadenaVerificar.length;j++){
+            if(cadena[i]===cadenaVerificar[j]){//si el caracter leido coinside con la cadena a verificar, resetea el contador
                 errores=0;
                 break;
             }else{
                 errores++;
             }
-        }if(errores>0){//si al final de recorrer la cadena numero, no encontro el valor entonces error
+        }if(errores>0){//si al final de recorrer la cadena Numero o Simbolo, no encontro el valor entonces error
             break;
         }
     }
-   manejadorTipo(errores,"Numero");
-}
-function Simbolo(cadena,posicionLetra){//funcion si es un simbolo
-    var errores=0;
-    for(var i=posicionLetra+1;i<cadena.length;i++){
-        for(var j=0; j<simbolos.length;j++){
-            if(cadena[i]===simbolos[j]){//si el caracter leido coinside con un simbolo, resetea el contador
-                errores=0;
-                break;
-            }else{//de lo contrario se suma
-                errores++;
-            }
-        }if(errores>0){//si al final de recorrer la cadena simbolo, no encontro el valor entonces error
-            break;
-        }
-    }
-    manejadorTipo(errores,"Simbolo");
+   manejadorTipo(errores,tipo);
 }
 function manejadorTipo(errores,tipo){//detecta si el valor final es un error o un tipo de Identificador
     if(errores>0){
-        error();
+        imprimirResultado("red","Error");
     }else{
-        document.getElementById("tablas").innerHTML="";
-        filasFinales+="<tr><td>"+palabra.value+"</td><td>"+tipo+"</td></tr>";
-        var escribirHtml="<h2 style='text-align:center; color:white;'>"+"Resultados"+"</h2>"+
-         "<table>"+"<tr>"+"<th>"+"Texto"+"</th>"+"<th>"+"Tipo"+"</th>"+"</tr>"+filasFinales+"</table>";
-        areaTabla.innerHTML+=escribirHtml;//agrega el valor a la tabla de html
+        imprimirResultado("black",tipo);
     }
 }
-function error(){//si entra en esta funcion es porque no complio la sintaxix establecida
-    console.log(palabra.value +" --> Es un error");
+function imprimirResultado(color,tipo){//imprime todos los identificadores analizados en la tabla ya sea error o segun un tipo
     document.getElementById("tablas").innerHTML="";
-    filasFinales+="<tr><td style='color:red'>"+palabra.value+"</td><td style='color:red'>Error</td></tr>"; //Ingresa la fila del error a la tabla
+    filasFinales+="<tr><td style='color:"+color+"'>"+palabra.value+"</td><td style='color:"+color+"'>"+tipo+"</td></tr>"; //Ingresa la fila del error a la tabla
     var escribirHtml="<h2 style='text-align:center; color:white;'>"+"Resultados"+"</h2>"+                  //la guarda en una variable
     "<table>"+"<tr>"+"<th>"+"Texto"+"</th>"+"<th>"+"Tipo"+"</th>"+"</tr>"+filasFinales+"</table>";
     areaTabla.innerHTML+=escribirHtml; //agrega el valor a la tabla de html
